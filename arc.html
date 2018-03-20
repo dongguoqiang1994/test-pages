@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="bingtu"  width="224" height="130" ></canvas>
+    <script>
+        var color = ["#999999","#f5f5f5"];
+        var data = [25,75];
+
+        function drawCircle(){
+            var canvas = document.getElementById("bingtu");
+            var ctx = canvas.getContext("2d");
+            var startPoint= 1.5 * Math.PI;
+            for(var i=0;i<data.length;i++){
+                ctx.fillStyle = color[i];
+                ctx.strokeStyle = color[i];
+                ctx.beginPath();
+                ctx.moveTo(112,65);
+                ctx.arc(112,65,65,startPoint,startPoint-Math.PI*2*(data[i]/100),true);
+                ctx.fill();
+                ctx.stroke();
+                startPoint -= Math.PI*2*(data[i]/100);
+            }
+
+            ctx.fillStyle = '#fff';
+            ctx.strokeStyle = '#fff';
+            ctx.beginPath();
+            ctx.arc(112,65,50,0,2*Math.PI);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillStyle = '#000';
+            ctx.strokeStyle = '#000';
+            ctx.font="20px yahei";
+            ctx.fillText("50%",90,70);
+        }
+        drawCircle();
+    </script>
+</body>
+</html>
